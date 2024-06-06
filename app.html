@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+  {{ personagens[0].name }}
+</div>
+
+<script type="module">
+  const { createApp } = Vue
+
+  const API_URL = `https://dragonball-api.com/api/characters`
+
+  createApp({
+    data: () => ({
+      personagens: []
+
+    }),
+    methods: {
+      async getPersonagens () {
+        const response = await fetch(API_URL)
+        const data = await response.json()
+        
+        this.personagens = data.items
+      }
+    },
+    created() {
+      this.getPersonagens()
+    }
+  }).mount('#app')
+</script>
