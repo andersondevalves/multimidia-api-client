@@ -1,8 +1,22 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+<link rel="stylesheet" href="./assets/style.css">
 <div id="app">
-  {{ personagens[0].name }}
+  <div class="container">
+    <div v-for="personage in personagens">
+      <div class="card">
+    <img :src="personage.image" width="50" height="70"> 
+        <p class="card-title">{{ personage.name }}</p>
+        <ul class="card-description">
+          <li>Força: {{ personage.ki }}</li>
+          <li>Maximo de Força: {{ personage.maxKi }}</li>
+          <li>raça: {{ personage.race }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 <script type="module">
   const { createApp } = Vue
